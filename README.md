@@ -59,6 +59,9 @@
 ---
 
 ## 快速开始
+### 已发布安装包
+
+[在这里](https://github.com/Goblinsscholar/Tomato/releases/tag/v0.1.0)
 
 ### 前置依赖
 

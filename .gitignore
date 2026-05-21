@@ -1,26 +1,31 @@
 # Dependencies
 node_modules/
 
-# Build output
+# Build output (frontend + Rust + Tauri bundles/installers)
 dist/
 src-tauri/target/
+src-tauri/gen/
 
 # Environment
 .env
 .env.local
+.env.*.local
 
 # IDE
 .vscode/
 .idea/
 *.swp
 *.swo
+*~
 
 # OS
 .DS_Store
 Thumbs.db
+*.DS_Store
 
 # Logs
 *.log
+npm-debug.log*
 
 # Personal config
 .claude/

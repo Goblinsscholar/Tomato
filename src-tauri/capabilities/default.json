@@ -1,0 +1,18 @@
+{
+  "$schema": "../gen/schemas/desktop-schema.json",
+  "identifier": "default",
+  "description": "Default capabilities for Tomato",
+  "windows": ["main", "widget"],
+  "permissions": [
+    "core:default",
+    "core:window:default",
+    "core:window:allow-minimize",
+    "core:window:allow-hide",
+    "core:window:allow-close",
+    "core:window:allow-toggle-maximize",
+    "core:event:default",
+    "notification:default",
+    "global-shortcut:default",
+    "opener:default"
+  ]
+}

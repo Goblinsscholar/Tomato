@@ -1,0 +1,111 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tomato</title>
+    <style>
+      body {
+        -webkit-font-smoothing: antialiased;
+        -moz-osx-font-smoothing: grayscale;
+        line-height: 1.5;
+      }
+      #splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        background: #f7f7f7;
+        transition: opacity 0.35s ease-out, transform 0.35s ease-out;
+      }
+      #splash.splash-hidden {
+        opacity: 0;
+        transform: scale(0.95);
+        pointer-events: none;
+      }
+      #splash-inner {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 12px;
+      }
+      #splash-title {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 28px;
+        font-weight: 700;
+        color: #222;
+        letter-spacing: -0.5px;
+      }
+      #splash-handle {
+        margin: 0;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+        font-size: 13px;
+        font-weight: 400;
+        color: #94a3b8;
+        letter-spacing: 0.3px;
+      }
+      #splash-dots {
+        display: flex;
+        gap: 6px;
+        margin-top: 8px;
+      }
+      .splash-dot {
+        width: 6px;
+        height: 6px;
+        border-radius: 50%;
+        background: #ef4444;
+        animation: splash-bounce 1.2s ease-in-out infinite;
+      }
+      .splash-dot:nth-child(1) { animation-delay: 0s; }
+      .splash-dot:nth-child(2) { animation-delay: 0.2s; }
+      .splash-dot:nth-child(3) { animation-delay: 0.4s; }
+      @keyframes splash-bounce {
+        0%, 80%, 100% { transform: scale(0.6); opacity: 0.4; }
+        40% { transform: scale(1); opacity: 1; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <div id="splash">
+      <div id="splash-inner">
+        <!-- Tomato SVG icon -->
+        <svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <!-- Stem -->
+          <path d="M32 8C32 8 28 14 28 18C28 20 30 22 32 22C34 22 36 20 36 18C36 14 32 8 32 8Z" fill="#22c55e"/>
+          <!-- Leaves -->
+          <path d="M32 14C32 14 38 10 42 12C44 13 44 16 42 18C40 20 36 18 32 14Z" fill="#16a34a" opacity="0.8"/>
+          <path d="M32 14C32 14 26 10 22 12C20 13 20 16 22 18C24 20 28 18 32 14Z" fill="#16a34a" opacity="0.8"/>
+          <!-- Tomato body (red) -->
+          <circle cx="32" cy="36" r="20" fill="#ef4444"/>
+          <!-- Highlight -->
+          <ellipse cx="26" cy="30" rx="6" ry="4" fill="#fca5a5" opacity="0.4"/>
+          <!-- Seeds -->
+          <circle cx="28" cy="38" r="2" fill="#fecaca" opacity="0.6"/>
+          <circle cx="34" cy="36" r="2" fill="#fecaca" opacity="0.6"/>
+          <circle cx="30" cy="42" r="2" fill="#fecaca" opacity="0.6"/>
+          <circle cx="36" cy="40" r="2" fill="#fecaca" opacity="0.6"/>
+        </svg>
+        <h1 id="splash-title">Tomato</h1>
+        <p id="splash-handle">Goblinscholar</p>
+        <div id="splash-dots">
+          <span class="splash-dot"></span>
+          <span class="splash-dot"></span>
+          <span class="splash-dot"></span>
+        </div>
+      </div>
+    </div>
+    <script>
+      // Widget window: hide splash immediately before React mounts
+      if (window.location.search === '?widget') {
+        var s = document.getElementById('splash');
+        if (s) { s.style.display = 'none'; }
+      }
+    </script>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>
